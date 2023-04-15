@@ -20,7 +20,7 @@ function Layout() {
     let currentYear = new Date().getFullYear();
 
     // Navigation bullets
-    let bullets = [{ 'href': '/news', 'title': 'Новости' }, { 'href': '/results', 'title': 'Результаты' }, { 'href': '/teams', 'title': 'Команды' }, { 'href': '/players', 'title': 'Игроки' }, { 'href': '/#', 'title': 'Документы' }];
+    let bullets = [{ 'href': '/news', 'title': 'Новости' }, { 'href': '/ladder', 'title': 'Результаты' }, { 'href': '/teams', 'title': 'Команды' }, { 'href': '/players', 'title': 'Игроки' }, { 'href': '/#', 'title': 'Документы' }];
 
     // Footer constants
     let contacts = { 'phone': '+7 495 7972727', 'email': 'rcl_info@hmail.com' };
