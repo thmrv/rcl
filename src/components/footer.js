@@ -32,10 +32,10 @@ export default class Footer extends React.Component {
                     </div>
                 </div>
                 <div class="social-wrapper">
-                    <div class="soc-links"><a href="#"><img src="/img/vk_white.svg"></img></a>
-                        <a href="#"><img src="/img/telegram_white.svg"></img></a>
-                        <a href="#"><img src="/img/twitch_white.svg"></img></a>
-                        <a href="#"><img src="/img/youtube_white.svg"></img></a>
+                    <div class="soc-links"><a href="https://vk.com/ruscyberleague"><img src="/img/vk_white.svg"></img></a>
+                        <a hidden class="inactive" href="#"><img src="/img/telegram_white.svg"></img></a>
+                        <a href="https://www.twitch.tv/ruscyberleague"><img src="/img/twitch_white.svg"></img></a>
+                        <a href="https://www.youtube.com/@ruscyberleaguecs"><img src="/img/youtube_white.svg"></img></a>
                     </div>
                 </div>
             </div>

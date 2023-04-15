@@ -75,7 +75,7 @@ function Home() {
             <div class="pendingMatches home">
                 {pending.map((match) => (<div class="match-block-wrapper">
                     <div class="left-wrapper">
-                        <div class="date">12 марта</div>
+                        <div class="date">TBD</div>
                         <div class="match-team-wrapper">
                             <img class="match-team-logo" src={match.team1.logo}></img>
                             <div class="match-team-title">{match.team1.name}</div>
@@ -89,8 +89,8 @@ function Home() {
                         </div>
                     </div>
                     <div class="right-wrapper time">
-                        <div class="match-time">14:32</div>
-                        <div class="timezone">МСК</div>
+                        <div class="match-time">TBD</div>
+                        <div class="timezone"></div>
                     </div>
                 </div>)
                 )}
