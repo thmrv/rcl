@@ -863,6 +863,19 @@ a.footer-bullet-lower:last-child {
 
 /* Misc */
 
+.match-block-wrapper {
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.05);
+}
+
+.match-block-wrapper:hover{
+  transform: translateY(-8px);
+  box-shadow: 0px 20px 20px rgba(0,0,0,0.075);
+}
+
+wrapper {
+  overflow: visible;
+}
+
 .inactive {
   opacity: 0.5;
   pointer-events: none;
@@ -892,6 +905,16 @@ a.footer-bullet-lower:last-child {
 
   .navigation-wrapper {
     display: none;
+  }
+
+  .news-show-more {
+    margin-left: 0px;
+  }
+
+  .logo-wrapper {
+    display: flex;
+    justify-content: start;
+    align-items: start;
   }
 
   .navigation-bullet.mobile {
