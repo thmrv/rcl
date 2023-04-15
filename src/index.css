@@ -67,7 +67,7 @@ a.navigation-bullet {
 }
 
 .masthead-wrapper {
-  min-height: 75vh;
+  min-height: 65vh;
   background-position-y: bottom;
   display: flex;
   color: white;
@@ -120,8 +120,50 @@ img.featured-team-logo {
   align-items: center;
 }
 
+.vs-span {
+  width: 100%;
+  text-align: center;
+  font-size: 1.4em;
+}
+
+.vs-timer-wrapper {
+  display: flex;
+  font-size: 3em;
+}
+
+.hours-wrapper {
+  padding-left: .5em;
+  margin-left: .5em;
+  border-left: 1px solid #eeeeee5e;
+  padding-right: .5em;
+  margin-right: .5em;
+  border-right: 1px solid #eeeeee5e;
+}
+
+.minutes-wrapper {
+  padding-right: .5em;
+  margin-right: .5em;
+  border-right: 1px solid #eeeeee5e;
+}
+
+.vs-date {
+  text-transform: uppercase;
+}
+
+.cap {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.days-wrapper,.hours-wrapper,.minutes-wrapper,.seconds-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .masthead-wrapper {
-  min-height: 75vh;
   background-position-y: bottom;
   display: flex;
   color: white;
@@ -129,7 +171,21 @@ img.featured-team-logo {
   align-items: center;
   justify-content: space-around;
   height: max-content;
-  padding-top: 2em;
+  padding-top: 3em;
+  background-repeat: no-repeat;
+  background-position-x: center;
+}
+
+.vs-team-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 33.33%;
+  gap: 2em;
+}
+
+.logo-wrapper:hover {
+  opacity: .75;
 }
 
 .vs-games-button:hover, img.watch-now-icons:hover{
@@ -153,6 +209,7 @@ img.featured-team-logo {
   width: 100%;
   height: 100%;
   top: 0px;
+  display: none;
 }
 
 .vs-timer-wrapper {
@@ -241,18 +298,29 @@ img.featured-team-logo.last {
 }
 
 .masthead-vs {
-  max-width: 50%;
+  max-width: 100%;
   gap: 4em;
 }
 
 .vs-team-name {
-  font-size: 4em;
+  font-size: 3em;
   font-weight: 600;
   text-transform: uppercase;
 }
 
-.masthead-vs {
-  max-width: 50%;
+@media (max-width:1400px){
+.masthead-wrapper.header-wrapper{
+  padding-top: 4em !important;
+}
+}
+
+.vs-watch-links {
+  padding-top: 1em !important;
+  margin-bottom: 2em !important;
+}
+
+td {
+  font-size: 0.9em;
 }
 
 .team_wrapper img {

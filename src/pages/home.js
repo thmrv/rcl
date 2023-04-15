@@ -20,7 +20,7 @@ function Home() {
                     }
                     return response.json();
                 })
-                .then((actualData) => { featured = actualData[1] })
+                .then((actualData) => { featured = actualData.at(-1) })
                 .catch((err) => {
                     console.log(err.message);
                 }),
