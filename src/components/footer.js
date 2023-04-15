@@ -1,12 +1,15 @@
 import React from "react";
 import Logo from "./logo.js";
+import SocFooter from "./social_footer.js";
 
 export default class Footer extends React.Component {
     render() {
+        let isMobile = window.screen.width > 1100 ? false : true;
+        let switchLogo = isMobile ? true : false;
         return <div class="footer-wrapper">
             <div class="footer-top-strip">
                 <div class="logo-wrapper">
-                    <Logo footer={true} />
+                    <Logo footer={true} variant={switchLogo}/>
                 </div>
                 <div class="footer-teams-wrapper">
                     <div class="title_md">Команды</div>
@@ -32,11 +35,7 @@ export default class Footer extends React.Component {
                     </div>
                 </div>
                 <div class="social-wrapper">
-                    <div class="soc-links"><a href="https://vk.com/ruscyberleague"><img src="/img/vk_white.svg"></img></a>
-                        <a hidden class="inactive" href="#"><img src="/img/telegram_white.svg"></img></a>
-                        <a href="https://www.twitch.tv/ruscyberleague"><img src="/img/twitch_white.svg"></img></a>
-                        <a href="https://www.youtube.com/@ruscyberleaguecs"><img src="/img/youtube_white.svg"></img></a>
-                    </div>
+                    <SocFooter />
                 </div>
             </div>
             <div class="footer-bot-strip">

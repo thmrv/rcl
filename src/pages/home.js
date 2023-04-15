@@ -1,5 +1,8 @@
 import Masthead from '../components/masthead.js';
 import { useEffect, useState } from 'react';
+import PendingMatches from '../components/pendingMatches.js';
+import Hero from '../components/hero.js';
+import Articles from '../components/articles.js';
 
 let featured, news, pending, ladder;
 
@@ -50,7 +53,7 @@ function Home() {
                 .catch((err) => {
                     console.log(err.message);
                 }),
-            fetch('https://api.itsport.pro/shortresults?skip=0&take=5')
+            fetch('https://api.itsport.pro/shortresults?skip=0&take=4')
                 .then((response) => {
                     if (!response.ok) {
                         throw new Error(
@@ -72,58 +75,9 @@ function Home() {
         console.log(featured);
         return (<>
             <Masthead featured={featured} />
-            <div class="pendingMatches home">
-                {pending.map((match) => (<div class="match-block-wrapper">
-                    <div class="left-wrapper">
-                        <div class="date">TBD</div>
-                        <div class="match-team-wrapper">
-                            <img class="match-team-logo" src={match.team1.logo}></img>
-                            <div class="match-team-title">{match.team1.name}</div>
-                        </div>
-                        <div class="match-vs">
-                            <hr></hr>VS<hr></hr>
-                        </div>
-                        <div class="match-team-wrapper">
-                            <img class="match-team-logo" src={match.team2.logo}></img>
-                            <div class="match-team-title">{match.team2.name}</div>
-                        </div>
-                    </div>
-                    <div class="right-wrapper time">
-                        <div class="match-time">TBD</div>
-                        <div class="timezone"></div>
-                    </div>
-                </div>)
-                )}
-            </div>
-            <div class="hero-wrapper">
-                <div class="hero-left">
-                    <div class="title_lg dark">ТУРНИРНАЯ ТАБЛИЦА</div>
-                    <table class="ladder_container">
-                        <thead><tr><td>МЕСТО</td><td>КОМАНДА</td><td>ОЧКИ</td><td>МАТЧЕЙ</td><td>Побед</td><td>НИЧЬИ</td><td>ПОРАЖЕНИЯ</td></tr></thead>
-                        {ladder.teams.map((team) => (<tr class="ladder-block-wrapper">
-                            <td>{team.place}</td><td><img class="img-sm" src={team.team.logo}></img></td><td>{team.points}</td><td>{team.wins + team.loses + team.draws}</td><td>{team.wins}</td><td>{team.draws}</td><td>{team.loses}</td>
-                        </tr>)
-                        )}
-                    </table>
-                    <a href='/ladder' class="news-show-more home">Смотреть все результаты</a>
-                </div>
-                <div class="hero-right">
-                    <img class="banner home" src="img/banner.png"></img>
-                </div>
-            </div>
-            <div class="news_container home">
-                {news.news.map((article) => (<div class="article-block-wrapper">
-                    <img class="news-img" src={article.imageUrl} alt={article.title}></img>
-                    <div class="news-text-wrapper">
-                        <div class="news-date">{article.createdDate}</div>
-                        <div class="news-title">{article.title}</div>
-                        <div class="news-description">{article.promo}</div>
-                        <a href={'/article/' + article.id} class="news-show-more">Подробнее</a>
-                    </div>
-                </div>)
-                )}
-                <a href='/news' class="news-show-more home">Смотреть все статьи</a>
-            </div>
+            <PendingMatches pending={pending} />
+            <Hero ladder={ladder} />
+            <Articles news={news} />
         </>);
     }
 };

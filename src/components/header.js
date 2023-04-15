@@ -6,6 +6,7 @@ import HeaderStrip from "./headerStrip.js";
 
 export default class Header extends React.Component {
     render() {
+        let isMobile = window.screen.width > 1100 ? false : true;
         return (<div class="header-wrapper animate__animated animate__fadeIn">
             <div class="header-top-strip">
                 <div class="logo-wrapper">
@@ -18,6 +19,7 @@ export default class Header extends React.Component {
                     <Soc />
                 </div>
             </div>
+            <div class="navigation-wrapper-mob"><Nav isMobile={isMobile} bullets={this.props.bullets}/></div>
             <div class="header-bot-strip">
                 <HeaderStrip teams={this.props.teams}/>
             </div>

@@ -16,6 +16,9 @@ import './App.css';
 
 import { useEffect, useState } from 'react';
 
+window.timeZone = {'name': 'MSK', 'alias': 'UTC +3'};
+window.locale = {"ru":{'default': 1, 'name': 'russian', 'alias': 'русский'}, "en":{'default': 0, 'name': 'english', 'alias': 'английский'}};
+
 function App() {
 
   let { playerId, matchId, articleId } = useParams();
