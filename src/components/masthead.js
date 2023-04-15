@@ -28,8 +28,8 @@ export default class Masthead extends React.Component {
             <Timer date={this.date}/>
             <div class="vs-watch-links"><div class="watch-now">Смотреть матчи:</div>
                 <div class="watch-now-icons-wrapper">
-                    <a href="https://www.youtube.com/@ruscyberleaguecs"><img src="img/twitch_white.svg" class="watch-now-icons"></img></a>
-                    <a href="https://www.twitch.tv/ruscyberleague"><img src="img/youtube_white.svg" class="watch-now-icons"></img></a>
+                    <a href="https://www.twitch.tv/ruscyberleague"><img src="img/twitch_white.svg" class="watch-now-icons"></img></a>
+                    <a href="https://www.youtube.com/@ruscyberleaguecs"><img src="img/youtube_white.svg" class="watch-now-icons"></img></a>
                     <a href="https://vk.com/ruscyberleague"><img src="img/vk_white.svg" class="watch-now-icons"></img></a>
                 </div>
             </div>
