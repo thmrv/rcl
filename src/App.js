@@ -1,25 +1,56 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import Layout from "./pages/layout";
+import Article from "./pages/article";
+import Match from "./pages/match";
+import Ladder from "./pages/ladder";
+import Teams from "./pages/teams";
+import News from "./pages/news";
+import Players from "./pages/players";
+import Player from "./pages/player";
+import FourOhFour from "./pages/404";
+import Home from "./pages/home";
+
+import 'animate.css';
 import './App.css';
 
+import { useEffect, useState } from 'react';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  let { playerId, matchId, articleId } = useParams();
+
+  // TODO вынести из мейна куда нибудь в конфиг всю статику
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  let currentYear = new Date().getFullYear();
+
+    return (
+      <div className="App">
+        <Router>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="teams" element={<Teams />} />
+              <Route path="players" element={<Players />} />
+              <Route path="player">
+                <Route path=":playerId" element={<Player />} />
+              </Route>
+              <Route path="news" element={<News />} />
+              <Route path="ladder" element={<Ladder />} />
+              <Route path="match">
+                <Route path=":matchId" element={<Match />} />
+              </Route>
+              <Route path="article">
+                <Route path=":articleId" element={<Article />} />
+              </Route>
+              <Route path="*" element={<FourOhFour />} />
+            </Route>
+          </Routes>
+        </Router>
+      </div>
+    );
 }
 
 export default App;

@@ -1,0 +1,9 @@
+{
+    "lang": [
+        "en",
+        "ru"
+    ],
+    "defaultLang": "ru",
+    "defaultTimezone": "+3",
+    "selectFeaturedMatchFromPending": true
+}
