@@ -2,7 +2,7 @@ import React from "react";
 
 let month = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
 
-export default class Article extends React.Component {
+export default class ArticlePage extends React.Component {
     constructor(props) {
         super(props)
         this.dateTime = new Date();

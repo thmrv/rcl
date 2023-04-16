@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import fetchHelper from '../fetchHelper';
-import Article from '../components/articlePage';
-import Articles from '../components/articles';
+import ArticlePage from '../components/articlePage';
 
 let article;
 
@@ -13,7 +12,7 @@ function Article(articleId) {
 
     useEffect(() => {
         setLoading(true)
-        fetchHelper('https://api.itsport.pro/news/1').then((data) => article = data).finally(() => {
+        fetchHelper('https://api.itsport.pro/news/' + articleId).then((data) => article = data).finally(() => {
             setData(true)
             setLoading(false)
         })
@@ -23,7 +22,7 @@ function Article(articleId) {
 
     if (typeof article != 'undefined') {
 
-        return (<Article />);
+        return (<><ArticlePage article={article}/></>);
     }
 };
 

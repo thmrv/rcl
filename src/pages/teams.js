@@ -30,6 +30,10 @@ function Teams() {
 
     if (loading) return (<div class="loader"><div class="spinner"></div></div>)
 
+    if (window.location.pathname.includes('teams')){
+        document.querySelector('.header-bot-strip').style.display = 'none';
+    }
+
     if (typeof teams != 'undefined') {
 
         return (<div class="teams-page-wrapper animate__animated animate__fadeIn">
