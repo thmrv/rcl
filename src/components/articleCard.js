@@ -16,7 +16,7 @@ export default class ArticleCard extends React.Component {
             {self.getDate(this.props.article.createdDate)}
             <div class="img-wrapper"><img class="news-img" src={this.props.article.imageUrl} alt={this.props.article.title}></img></div>
             <div class="news-text-wrapper">
-                <div class="news-date">{this.dateTime[1]}</div>
+                <div class="news-date">{this.dateTime[1]} {this.dateTime[2]}</div>
                 <div class="news-title">{this.props.article.title}</div>
                 <div class="news-description">{this.props.article.promo}</div>
                 <a href={'/article/' + this.props.article.id} class="news-show-more">Подробнее</a>
@@ -26,6 +26,6 @@ export default class ArticleCard extends React.Component {
 
     getDate(date) {
         let object = new Date(date);
-        this.dateTime = [object.getHours() + ":" + (object.getMinutes() < 10 ? '0' : '') + object.getMinutes(), object.getDate() + ' ' + month[object.getMonth()]];
+        this.dateTime = [object.getHours() + ":" + (object.getMinutes() < 10 ? '0' : '') + object.getMinutes(), object.getDate() + ' ' + month[object.getMonth()], object.getFullYear()];
     }
 }

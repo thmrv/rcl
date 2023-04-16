@@ -927,11 +927,48 @@ wrapper {
     spinner-oaa3wk 1.6s infinite linear;
 }
 
+.news-top {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+}
+
+.news-top .news-title {
+  font-size: 2em;
+}
+
+.news-top .news-description{
+  font-size: 1.2em;
+}
+
+.article-page-wrapper {
+  display: flex;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding: 2em;
+  border: 1px solid #eee;
+}
+
+.news-content {
+  color: #6a6a6a;
+}
+
 .week-section-wrapper {
   display: flex;
   gap: 1em;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.news-page-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2em;
 }
 
 .match-team-score {
@@ -942,11 +979,44 @@ wrapper {
   align-items: center;
 }
 
+.news-page-text-wrapper {
+  margin-left: 2em;
+  padding-left: 2em;
+  border-left: 1px solid #eee;
+}
+
+.news-item-wrapper {
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.news-page-text-wrapper {
+  align-self: stretch;
+  flex-basis: 50%;
+  /* flex: 1; */
+}
+
 .week-title-wrapper {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-between;
+}
+
+.news-date {
+  background: #eee;
+  width: max-content;
+  padding: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.news-top {
+  width: 100%;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #eee;
 }
 
 .week-title {

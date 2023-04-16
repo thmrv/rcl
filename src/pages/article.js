@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
 import fetchHelper from '../fetchHelper';
 import ArticlePage from '../components/articlePage';
+import { useParams } from 'react-router-dom';
 
 let article;
 
-function Article(articleId) {
+function Article() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     let currentYear = new Date().getFullYear();
+
+    const params = useParams();
+    const articleId = params.articleId;
 
     useEffect(() => {
         setLoading(true)
@@ -19,6 +23,8 @@ function Article(articleId) {
     }, [setData]);
 
     if (loading) return (<div class="loader"><div class="spinner"></div></div>)
+
+    console.log(article)
 
     if (typeof article != 'undefined') {
 
