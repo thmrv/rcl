@@ -9,6 +9,7 @@ function Ladder() {
     let currentYear = new Date().getFullYear();
 
     useEffect(() => {
+        setLoading(true)
         fetch('https://api.itsport.pro/shortresults?skip=0&take=25')
             .then((response) => {
                 if (!response.ok) {
@@ -23,8 +24,11 @@ function Ladder() {
                 console.log(err.message);
             }).finally(() => {
                 setData(true)
+                setLoading(false);
             })
     }, [setData]);
+
+    if (loading) return (<div class="loader"><div class="spinner"></div></div>)
 
     if (typeof ladder != 'undefined') {
 

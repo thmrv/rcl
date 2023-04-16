@@ -9,7 +9,9 @@ import News from "./pages/news";
 import Players from "./pages/players";
 import Player from "./pages/player";
 import FourOhFour from "./pages/404";
+import Team from './pages/team';
 import Home from "./pages/home";
+import Matches from './pages/matches';
 
 import 'animate.css';
 import './App.css';
@@ -21,13 +23,14 @@ window.locale = {"ru":{'default': 1, 'name': 'russian', 'alias': 'русский
 
 function App() {
 
-  let { playerId, matchId, articleId } = useParams();
+  let { playerId, matchId, articleId, teamId} = useParams();
 
-  // TODO вынести из мейна куда нибудь в конфиг всю статику
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   let currentYear = new Date().getFullYear();
+
+  if (window.document.readyState === 'loading') return (<div class="loader page"><div class="spinner"></div></div>)
 
     return (
       <div className="App">
@@ -36,9 +39,13 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="teams" element={<Teams />} />
+              <Route path="matches" element={<Matches />} />
               <Route path="players" element={<Players />} />
               <Route path="player">
                 <Route path=":playerId" element={<Player />} />
+              </Route>
+              <Route path="team">
+                <Route path=":teamId" element={<Team />} />
               </Route>
               <Route path="news" element={<News />} />
               <Route path="ladder" element={<Ladder />} />

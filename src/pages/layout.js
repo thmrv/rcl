@@ -4,6 +4,7 @@ import Header from '../components/header.js';
 import Masthead from '../components/masthead.js';
 import Footer from '../components/footer.js';
 import { useParams } from "react-router-dom";
+import fetchHelper from "../fetchHelper.js";
 
 import { useEffect, useState } from 'react';
 
@@ -20,7 +21,7 @@ function Layout() {
     let currentYear = new Date().getFullYear();
 
     // Navigation bullets
-    let bullets = [{ 'href': '/news', 'title': 'Новости' }, { 'href': '/ladder', 'title': 'Результаты' }, { 'href': '/teams', 'title': 'Команды' }, { 'href': '/players', 'title': 'Игроки' }, { 'href': '/#', 'title': 'Документы' }];
+    let bullets = [{ 'href': '/news', 'title': 'Новости' }, { 'href': '/matches', 'title': 'Результаты' }, { 'href': '/teams', 'title': 'Команды' }, { 'href': '/players', 'title': 'Игроки' }, { 'href': '/#', 'title': 'Документы' }];
 
     // Footer constants
     let contacts = { 'phone': '+7 495 7972727', 'email': 'info@ruscyberleague.ru' };
@@ -28,24 +29,15 @@ function Layout() {
     let footer_links = ['СВЕДЕНИЯ ОБ ОРГАНИЗАЦИИ', 'УСЛОВИЯ ПОЛЬЗОВАНИЯ САЙТОМ', 'КОНТАКТЫ']; // TODO рефактор со ссылками, пока пустые
     let disclaimer = '© RCL 2021—' + currentYear + ' Все права защищены';
 
-
     useEffect(() => {
-        fetch('https://api.itsport.pro/teams?take=25')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(
-                        `This is an HTTP error: The status is ${response.status}`
-                    );
-                }
-                return response.json();
-            })
-            .then((actualData) => { teams = actualData })
-            .catch((err) => {
-                console.log(err.message);
-            }).finally(() => {
-                setData(true)
-            })
+        setLoading(true)
+        fetchHelper('https://api.itsport.pro/teams?take=25').then((data) => teams = data).finally(() => {
+            setData(true)
+            setLoading(false)
+        })
     }, [setData]);
+
+    if (loading) return (<div class="loader"><div class="spinner"></div></div>)
 
     if (typeof teams !== 'undefined') {
     return (

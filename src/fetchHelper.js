@@ -2,13 +2,19 @@ import axios from "axios";
 import WebSocket from 'ws';
 
 export default async function fetchHelper(endpoint) {
-  axios.get(endpoint)
-    .then(response => {
-      return response.data;
-    })
-    .catch(error => {
-      console.log(error);
-    });
+  return fetch(endpoint)
+  .then((response) => {
+      if (!response.ok) {
+          throw new Error(
+              `This is an HTTP error: The status is ${response.status}`
+          );
+      }
+      return response.json();
+  })
+  .then((actualData) => { return actualData })
+  .catch((err) => {
+      console.log(err.message);
+  })
 }
 
 export function wsHelper(endpoint, data) {

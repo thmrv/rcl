@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import PendingMatches from '../components/pendingMatches.js';
 import Hero from '../components/hero.js';
 import Articles from '../components/articles.js';
+import fetchHelper from '../fetchHelper.js';
 
 let featured, news, pending, ladder;
 
@@ -13,6 +14,7 @@ function Home() {
     let currentYear = new Date().getFullYear();
 
     useEffect(() => {
+        setLoading(true);
         Promise.all([
             fetch('https://api.itsport.pro/pending')
                 .then((response) => {
@@ -68,11 +70,13 @@ function Home() {
                 })
         ]).finally(() => {
             setData(true)
+            setLoading(false)
         })
     }, [setData]);
 
+    if (loading) return (<div class="loader"><div class="spinner"></div></div>)
+
     if (typeof featured != 'undefined' && typeof news != 'undefined' && typeof pending != 'undefined' && typeof ladder != 'undefined') {
-        console.log(featured);
         return (<>
             <Masthead featured={featured} />
             <PendingMatches pending={pending} />

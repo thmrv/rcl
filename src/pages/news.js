@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ArticleCard from '../components/articleCard';
 
 let news;
 
@@ -9,6 +10,7 @@ function News() {
     let currentYear = new Date().getFullYear();
 
     useEffect(() => {
+        setLoading(true)
         fetch('https://api.itsport.pro/news?take=10&skip=0')
             .then((response) => {
                 if (!response.ok) {
@@ -23,24 +25,24 @@ function News() {
                 console.log(err.message);
             }).finally(() => {
                 setData(true)
+                setLoading(false)
             })
     }, [setData]);
+
+    if (loading) return (<div class="loader"><div class="spinner"></div></div>)
 
     if (typeof news != 'undefined') {
 
         return (<div class="news-page-wrapper animate__animated animate__fadeIn">
             <div class="title_lg dark">Новости</div>
             <div class="news_container">
-                {news.news.map((article) => (<div class="article-block-wrapper">
-                    <img class="news-img" src={article.imageUrl} alt={article.title}></img>
-                    <div class="news-text-wrapper">
-                        <div class="news-date">{article.createdDate}</div>
-                        <div class="news-title">{article.title}</div>
-                        <div class="news-description">{article.promo}</div>
-                        <a href={'/article/' + article.id} class="news-show-more">Подробнее</a>
-                    </div>
-                </div>)
-                )}
+                <div class="news_container home">
+                    {news.news.map((article) => (
+                        <ArticleCard article={article} />
+                    )
+                    )}
+                    <a href='/news' class="news-show-more home">Смотреть все статьи</a>
+                </div>
             </div>
         </div>);
     }
