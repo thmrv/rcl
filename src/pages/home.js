@@ -6,6 +6,7 @@ import Articles from '../components/articles.js';
 import fetchHelper from '../fetchHelper.js';
 
 let featured, news, pending, ladder;
+let mastheadStatic = false;
 
 function Home() {
     const [data, setData] = useState(null);
@@ -69,8 +70,16 @@ function Home() {
                     console.log(err.message);
                 })
         ]).finally(() => {
-            setData(true)
-            setLoading(false)
+            if (typeof featured == 'undefined') {
+                fetchHelper('https://api.itsport.pro/games?take=1').then((data) => featured = data).finally(() => {
+                    mastheadStatic = true;
+                    setData(true)
+                    setLoading(false)
+                })
+            }else{
+                setData(true)
+                setLoading(false)
+            }
         })
     }, [setData]);
 
@@ -78,8 +87,8 @@ function Home() {
 
     if (typeof featured != 'undefined' && typeof news != 'undefined' && typeof pending != 'undefined' && typeof ladder != 'undefined') {
         return (<>
-            <Masthead featured={featured} />
-            <PendingMatches pending={pending} />
+            <Masthead featured={featured.games[0]} static={mastheadStatic} />
+            {typeof pending !== 'undefined' ? <PendingMatches pending={pending} /> : ''}
             <Hero ladder={ladder} />
             <Articles news={news} />
         </>);

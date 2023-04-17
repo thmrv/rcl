@@ -27,7 +27,7 @@ export default class Masthead extends React.Component {
                 </div>
             </div>
             <div class="vs-date">{this.date.getDate() + ' ' + month[this.date.getMonth()] + ' ' + this.date.getFullYear() + " - " + this.date.getHours() + ":" + (this.date.getMinutes() < 10 ? '0' : '') + this.date.getMinutes() + ' МСК'}</div>
-               { this.date.getTime() > this.currentDate.getTime() ? <Timer date={this.date}/> : <div class="status">Начался</div> }
+               <Timer static={this.props.static} date={this.date}/>
             <div class="vs-watch-links"><div class="watch-now">Смотреть матчи:</div>
                 <div class="watch-now-icons-wrapper">
                     <a href="https://www.twitch.tv/ruscyberleague"><img src="img/twitch_white.svg" class="watch-now-icons"></img></a>
