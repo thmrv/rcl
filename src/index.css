@@ -979,6 +979,10 @@ wrapper {
   align-items: center;
 }
 
+.pendingMatches.home {
+  overflow-x: hidden;
+}
+
 .news-page-text-wrapper {
   margin-left: 2em;
   padding-left: 2em;
