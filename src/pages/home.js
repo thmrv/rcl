@@ -87,7 +87,7 @@ function Home() {
 
     if (typeof featured != 'undefined' && typeof news != 'undefined' && typeof pending != 'undefined' && typeof ladder != 'undefined') {
         return (<>
-            <Masthead featured={featured.games[0]} static={mastheadStatic} />
+            <Masthead featured={mastheadStatic ? featured.games[0] : featured} static={mastheadStatic} />
             {typeof pending !== 'undefined' ? <PendingMatches pending={pending} /> : ''}
             <Hero ladder={ladder} />
             <Articles news={news} />
