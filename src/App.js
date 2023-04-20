@@ -17,9 +17,11 @@ import 'animate.css';
 import './App.css';
 
 import { useEffect, useState } from 'react';
+import Docs from './pages/docs';
 
 window.timeZone = {'name': 'MSK', 'alias': 'UTC +3'};
 window.locale = {"ru":{'default': 1, 'name': 'russian', 'alias': 'русский'}, "en":{'default': 0, 'name': 'english', 'alias': 'английский'}};
+window.apiHost = 'https://api.itsport.pro/';
 
 function App() {
 
@@ -40,6 +42,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path="teams" element={<Teams />} />
               <Route path="matches" element={<Matches />} />
+              <Route path="docs" element={<Docs />} />
               <Route path="players" element={<Players />} />
               <Route path="player">
                 <Route path=":playerId" element={<Player />} />

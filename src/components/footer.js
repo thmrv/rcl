@@ -15,7 +15,7 @@ export default class Footer extends React.Component {
                     <div class="title_md">Команды</div>
                     <div class="footer-teams">
                         {this.props.teams.teams.map((team, index) => 
-                            <a href="/teams" class="footer-bullet">{team.name}</a>
+                            <a href={'/team/' + team.id} class="footer-bullet">{team.name}</a>
                         )}
                     </div>
                 </div>

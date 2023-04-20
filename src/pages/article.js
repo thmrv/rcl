@@ -16,7 +16,7 @@ function Article() {
 
     useEffect(() => {
         setLoading(true)
-        fetchHelper('https://api.itsport.pro/news/' + articleId).then((data) => article = data).finally(() => {
+        fetchHelper(window.apiHost + 'news/' + articleId).then((data) => article = data).finally(() => {
             setData(true)
             setLoading(false)
         })

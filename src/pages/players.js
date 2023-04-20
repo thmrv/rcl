@@ -1,6 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useReducer } from 'react';
+import PlayersTable from '../components/playersTable';
+import fetchHelper from '../fetchHelper';
 
 let players;
+let step = 50,
+    skip = 0;
 
 function Players() {
     const [data, setData] = useState(null);
@@ -8,35 +12,41 @@ function Players() {
     const [error, setError] = useState(null);
     let currentYear = new Date().getFullYear();
 
+    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+
+    const loadMore = () => {
+        step += 25;
+        skip += 25;
+        setData(false)
+        setLoading(true)
+        fetchHelper(window.apiHost + 'players?take=' + step + '&skip=' + skip).then((data) => players = data).finally(() => {
+            setData(true)
+            setLoading(false)
+            forceUpdate();
+        })
+    }
+
+    const reload = () => {
+        return window.location.reload();
+    }
+
     useEffect(() => {
-        fetch('https://api.itsport.pro/players?take=50&skip=0')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(
-                        `This is an HTTP error: The status is ${response.status}`
-                    );
-                }
-                return response.json();
-            })
-            .then((actualData) => { players = actualData })
-            .catch((err) => {
-                console.log(err.message);
-            }).finally(() => {
+            setLoading(true)
+            fetchHelper(window.apiHost + 'players?take=50&skip=0').then((data) => players = data).finally(() => {
                 setData(true)
+                setLoading(false)
             })
     }, [setData]);
 
     if (typeof players != 'undefined') {
-
-        return (<div class="players-page-wrapper animate__animated animate__fadeIn">
-            <table class="players_container">
-                <thead><tr><td>Игрок</td><td>Команда</td><td>Матчей</td><td>Убийств</td><td>Помощи</td><td>Смертей</td><td>K/D</td><td>K/D diff</td></tr></thead>
-                {players.players.map((player) => (<tr class="player-block-wrapper">
-                    <td class="playerinfo"><img class="img-sm" src={player.player.countryLogo}></img><img class="img-sm avatar" src={player.player.imageUrl}></img>{player.player.nickName}</td><td><img class="img-sm" src={player.team.logo}></img></td><td>{player.stats.games}</td><td>{player.stats.kills}</td><td>{player.stats.assists}</td><td>{player.stats.deaths}</td><td style={{color: player.stats.kd >= 0 ? '#159800' : '#BD0000' }}>{player.stats.kd}</td><td style={{color: player.stats.kdDiff >= 0 ? '#159800' : '#BD0000'}}>{player.stats.kdDiff}</td>
-                </tr>)
-                )}
-            </table>
-        </div>);
+        if (players.length === 0){
+            return (<div class="animate__animated animate__fade no-results" onClick={reload}>Результатов нет <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+          </svg></div>)
+        }
+        return (<><PlayersTable players={players}/>
+         <div class={'load-more'} text={'Показать еще'} data-attr={'load-more'} onClick={loadMore} >Показать еще</div></>);
     }
 };
 

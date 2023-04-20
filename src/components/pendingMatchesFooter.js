@@ -1,9 +1,9 @@
 import React from "react";
-import MatchCard from "./matchCard";
+import MatchCardBG from "./matchCardBG";
 
 let month = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
 
-export default class PendingMatches extends React.Component {
+export default class PendingMatchesFooter extends React.Component {
     constructor(props) {
         super(props)
         this.dateTime = new Date();
@@ -12,12 +12,12 @@ export default class PendingMatches extends React.Component {
     render() {
         let self = this;
         return (
-            <div class="pendingMatches home scroller">
-                <div class="title_sm">Ближайшие матчи</div>
+            <div class="footerMatches-vs">
+                <div class="title-skewed footer"><img src="/img/cut_rect.svg"></img>БУДУЩИЕ МАТЧИ</div>
                 <wrapper>
                     {
-                        this.props.pending.map((match) => (
-                            <MatchCard match={match} pending={true}/>
+                        this.props.pending.map((match, index) => (
+                            index < 3 ? <MatchCardBG match={match} pending={true}/> : ''
                         )
                         )
                     }

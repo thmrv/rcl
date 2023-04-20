@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import TeamsTable from '../components/teamsTable';
+import fetchHelper from '../fetchHelper';
 
 let teams;
 
@@ -9,20 +11,8 @@ function Teams() {
     let currentYear = new Date().getFullYear();
 
     useEffect(() => {
-        setLoading(true)
-        fetch('https://api.itsport.pro/teams/?take=25')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(
-                        `This is an HTTP error: The status is ${response.status}`
-                    );
-                }
-                return response.json();
-            })
-            .then((actualData) => { teams = actualData })
-            .catch((err) => {
-                console.log(err.message);
-            }).finally(() => {
+            setLoading(true)
+            fetchHelper('https://api.itsport.pro/teams/?take=25').then((data) => teams = data).finally(() => {
                 setData(true)
                 setLoading(false)
             })
@@ -36,17 +26,9 @@ function Teams() {
 
     if (typeof teams != 'undefined') {
 
-        return (<div class="teams-page-wrapper animate__animated animate__fadeIn">
-            <div class="title_lg dark">Команды</div>
-            <div class="title_md dark">СЕЗОН 2022/2023</div>
-            <div class="teams_container">
-                {teams.teams.map((team) => (<div class="team-block-wrapper">
-                    <div class="team-block-logo"><img src={team.logo} class="img-team-logo"></img></div>
-                    <div class="team-block-name">{team.name}</div>
-                </div>)
-                )}
-            </div>
-        </div>);
+        return (<><TeamsTable teams={teams} /></>);
+    }else{
+        <div class="status-error">Нет данных</div>
     }
 };
 

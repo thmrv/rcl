@@ -19,7 +19,7 @@ export default class ArticleCard extends React.Component {
                 <div class="news-date">{this.dateTime[1]} {this.dateTime[2]}</div>
                 <div class="news-title">{this.props.article.title}</div>
                 <div class="news-description">{this.props.article.promo}</div>
-                <a href={'/article/' + this.props.article.id} class="news-show-more">Подробнее</a>
+                <a href={'/article/' + this.props.article.id} class="news-show-more">Подробнее<img src="img/arrow-more.svg"></img></a>
             </div>
         </div>)
     }

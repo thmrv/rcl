@@ -21,23 +21,28 @@ function Layout() {
     let currentYear = new Date().getFullYear();
 
     // Navigation bullets
-    let bullets = [{ 'href': '/news', 'title': 'Новости' }, { 'href': '/matches', 'title': 'Результаты' }, { 'href': '/teams', 'title': 'Команды' }, { 'href': '/players', 'title': 'Игроки' }, { 'href': '/#', 'title': 'Документы' }];
+    let bullets = [{ 'href': '/news', 'title': 'Новости' }, { 'href': '/matches', 'title': 'Результаты' }, { 'href': '/teams', 'title': 'Команды' }, { 'href': '/players', 'title': 'Игроки' }, { 'href': '/docs', 'title': 'Документы' }];
 
     // Footer constants
     let contacts = { 'phone': '+7 495 7972727', 'email': 'info@ruscyberleague.ru' };
-    let footer_general = [{ 'link': '/news', 'text': 'Новости' }, { 'link': '/results', 'text': 'Результаты' }, { 'link': '/players', 'text': 'Игроки' }, { 'link': '/#', 'text': 'Документы' }];
+    let footer_general = [{ 'link': '/news', 'text': 'Новости' }, { 'link': '/matches', 'text': 'Результаты' }, { 'link': '/players', 'text': 'Игроки' }, { 'link': '/#', 'text': 'Документы' }];
     let footer_links = ['СВЕДЕНИЯ ОБ ОРГАНИЗАЦИИ', 'УСЛОВИЯ ПОЛЬЗОВАНИЯ САЙТОМ', 'КОНТАКТЫ']; // TODO рефактор со ссылками, пока пустые
     let disclaimer = '© RCL 2021—' + currentYear + ' Все права защищены';
 
     useEffect(() => {
         setLoading(true)
-        fetchHelper('https://api.itsport.pro/teams?take=25').then((data) => teams = data).finally(() => {
-            setData(true)
-            setLoading(false)
+        fetchHelper(window.apiHost + 'teams?take=25').then((data) => teams = data).finally(() => {
+            if (typeof teams === 'undefined'){
+                setError(true)
+            }
+            if (!setError()){
+                setData(true)
+                setLoading(false)
+            }
         })
     }, [setData]);
 
-    if (loading) return (<div class="loader"><div class="spinner"></div></div>)
+    if (loading) return (<div class="loader main"><div class="spinner"></div></div>)
 
     if (typeof teams !== 'undefined') {
     return (
@@ -51,6 +56,8 @@ function Layout() {
             <Footer teams={teams} links={footer_links} general={footer_general} contacts={contacts} disclaimer={disclaimer} />
         </>
     )
+    }else{
+        return (<div class="loader main error"><div class="spinner error"></div><div class="error-msg">500</div></div>)
     }
 };
 

@@ -10,7 +10,7 @@ export default class Articles extends React.Component {
     }
 
     render() {
-        return (<div class="news_container home">
+        return (<div class="news_container home"><div class="title-skewed"><img src="/img/cut_rect.svg"></img>НОВОСТИ</div>
         {this.props.news.news.map((article) => (
             <ArticleCard article={article} />
         )

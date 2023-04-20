@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "./link";
 
 let month = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
 
@@ -28,7 +29,7 @@ export default class ArticlePage extends React.Component {
                     </div>
                     <div dangerouslySetInnerHTML={{ __html: this.htmlDecode(this.props.article.content) }} class="news-content"></div>
                 </div>
-                <a href={'/news'} class="news-show-more">Назад в новости</a>
+                <Link class={'news-show-more'} link={'/news'} text={'Назад в новости'} data-attr={'show-more'} /> 
             </div>
         </div>)
     }
