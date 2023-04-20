@@ -2,6 +2,8 @@ import React from "react";
 import Logo from "./logo.js";
 import SocFooter from "./social_footer.js";
 
+let docLinks = ['/docs/Kartochka_organizacii.pdf', '/docs/Usloviya_polzovania_saitom.docx', '/docs/Contacts.pdf',]
+
 export default class Footer extends React.Component {
     render() {
         let isMobile = window.screen.width > 1100 ? false : true;
@@ -40,8 +42,8 @@ export default class Footer extends React.Component {
             </div>
             <div class="footer-bot-strip">
                 <div class="footer-links">
-                    {this.props.links.map((title) => 
-                        <a href="#" class="footer-bullet-lower">{title}</a>
+                    {this.props.links.map((title, index) => 
+                        <a target="_blank" href={docLinks[index]} class="footer-bullet-lower">{title}</a>
                     )}
                 </div>
                 <div class="footer-disclaimer">{this.props.disclaimer}</div>

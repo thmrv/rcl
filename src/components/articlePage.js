@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "./link";
+const parse = require('html-react-parser');
 
 let month = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
 
@@ -27,7 +28,8 @@ export default class ArticlePage extends React.Component {
                         <div class="news-title">{this.props.article.title}</div>
                         <div class="news-description">{this.props.article.promo}</div>
                     </div>
-                    <div dangerouslySetInnerHTML={{ __html: this.htmlDecode(this.props.article.content) }} class="news-content"></div>
+                    <div class="news-content">{ parse(this.props.article.content) }
+                    </div>
                 </div>
                 <Link class={'news-show-more'} link={'/news'} text={'Назад в новости'} data-attr={'show-more'} /> 
             </div>
