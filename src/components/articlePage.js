@@ -26,7 +26,6 @@ export default class ArticlePage extends React.Component {
                     <div class="news-date">{this.dateTime[1]} {this.dateTime[2]}</div>
                     <div class="news-top">
                         <div class="news-title">{this.props.article.title}</div>
-                        <div class="news-description">{this.props.article.promo}</div>
                     </div>
                     <div class="news-content">{ parse(this.props.article.content) }
                     </div>
