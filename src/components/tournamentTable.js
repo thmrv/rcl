@@ -8,7 +8,7 @@ export default class TournamentTable extends React.Component {
             <table class="ladder_container">
                 <thead><tr><td>МЕСТО</td><td>КОМАНДА</td><td>ОЧКИ</td><td>МАТЧЕЙ</td><td>Побед</td><td>НИЧЬИ</td><td>ПОРАЖЕНИЯ</td></tr></thead>
                 {this.props.ladder.teams.map((team) => (<tr class="ladder-block-wrapper">
-                    <a href={'team/' + team.id}><td>{team.place}</td><td><img class="img-sm" src={team.team.logo}></img></td><td>{team.points}</td><td>{team.wins + team.loses + team.draws}</td><td>{team.wins}</td><td>{team.draws}</td><td>{team.loses}</td></a>
+                    <td>{team.place}</td><td><a href={'team/' + team.team.id}><img class="img-sm" src={team.team.logo}></img></a></td><td>{team.points}</td><td>{team.wins + team.loses + team.draws}</td><td>{team.wins}</td><td>{team.draws}</td><td>{team.loses}</td>
                 </tr>)
                 )}
                 {this.props.ladder === [] ? 'Результатов нет' : ''}
