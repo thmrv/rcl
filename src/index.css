@@ -2278,6 +2278,10 @@ img.img-sm.avatar {
     margin-right: 1em;
   }
 
+  .ladder-block-wrapper {
+    height: 55px;
+  }
+
   .subwrapper {
     width: 100% !important;
   }
