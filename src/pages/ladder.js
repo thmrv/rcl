@@ -32,7 +32,7 @@ function Ladder() {
 
     useEffect(() => {
             setLoading(true)
-            fetchHelper(window.apiHost + 'shortresults?skip=0&take=50').then((data) => ladder = data).finally(() => {
+            fetchHelper(window.apiHost + 'shortresults').then((data) => ladder = data).finally(() => {
                 setData(true)
                 setLoading(false)
             })
@@ -47,8 +47,7 @@ function Ladder() {
             <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
           </svg></div>)
         }
-        return (<div class="animate__animated animate__fadeIn"><TournamentTable ladder={ladder}/>
-         <div class={'load-more'} text={'Показать еще'} data-attr={'load-more'} onClick={loadMore} >Показать еще</div></div>);
+        return (<div class="animate__animated animate__fadeIn"><TournamentTable ladder={ladder}/></div>);
     }
 };
 

@@ -18,6 +18,7 @@ import './App.css';
 
 import { useEffect, useState } from 'react';
 import Docs from './pages/docs';
+import Pending from './pages/pending';
 
 window.timeZone = {'name': 'MSK', 'alias': 'UTC +3'};
 window.locale = {"ru":{'default': 1, 'name': 'russian', 'alias': 'русский'}, "en":{'default': 0, 'name': 'english', 'alias': 'английский'}};
@@ -40,6 +41,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
+              <Route path="pending" element={<Pending />} />
               <Route path="teams" element={<Teams />} />
               <Route path="matches" element={<Matches />} />
               <Route path="docs" element={<Docs />} />

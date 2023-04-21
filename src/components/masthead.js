@@ -35,7 +35,7 @@ export default class Masthead extends React.Component {
                     <a href="https://vk.com/ruscyberleague"><img src="img/vk_white.svg" class="watch-now-icons"></img></a>
                 </div>
             </div>
-            <a href="/matches" class="vs-games-button"><img class="date-icon" src="img/date.svg"></img>БЛИЖАЙШИЕ МАТЧИ</a>
+            <a href="/pending" class="vs-games-button"><img class="date-icon" src="img/date.svg"></img>БЛИЖАЙШИЕ МАТЧИ</a>
         </div>)
     }
 }

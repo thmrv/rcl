@@ -1,5 +1,6 @@
 import React from "react";
 import Timer from "./timer";
+import Modal from "./modal";
 
 export default class MastheadMatch extends React.Component {
     constructor(props){
@@ -10,6 +11,10 @@ export default class MastheadMatch extends React.Component {
     }
     
     render() {
+        const showModal = (e) => {
+            document.getElementById('modal-' + e.currentTarget.getAttribute('data-modal-id')).classList.remove('hidden');
+            document.querySelector('body').style.overflowY = 'hidden';
+        }
         let isMobile = window.screen.width > 1100 ? false : true;
         let self = this;
         let month = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря']
@@ -28,7 +33,7 @@ export default class MastheadMatch extends React.Component {
             </div>
             <div class="vs-maps-wrapper">
                 {this.props.match.maps.map((map) => (
-                    <div id={'showmodal-' + map.id} class="map-wrapper map"><div class={map.mapName !== null ? 'image-wrapper map loaded' : 'image-wrapper map'}><img src={map.mapName !== null ? 'https://www.hltv.org/img/static/statsmatchmaps/' + map.mapName.split("_").pop() + '.png' : '/img/logo_insert.svg'} class="map-img"></img></div>
+                    <div onClick={showModal} data-modal-id={map.id} id={'showmodal-' + map.id} class="map-wrapper map"><div class={map.mapName !== null ? 'image-wrapper map loaded' : 'image-wrapper map'}><img src={map.mapName !== null ? 'https://www.hltv.org/img/static/statsmatchmaps/' + map.mapName.split("_").pop() + '.png' : '/img/logo_insert.svg'} class="map-img"></img></div>
                         <div class="map-score"><div class="map-score-text">{map.mapName ?? 'Карта неизвестна'}</div><div class="map-score-text">{map.team1Score + ' : ' + map.team2Score}</div></div>
                     </div>
                 ))}
@@ -40,12 +45,10 @@ export default class MastheadMatch extends React.Component {
                     <a href="https://vk.com/ruscyberleague"><img src="/img/vk_white.svg" class="watch-now-icons"></img></a>
                 </div>
             </div>
+            {this.props.match.maps.map((map) => (
+                <Modal id={map.id} playersTeam1={this.props.players1} playersTeam2={this.props.players2}/>
+            ))}
         </div>)
     }
 
-    showModal(){
-        document.querySelector('#team1').addEventListener('click', function(){
-            document.querySelector('#team1').classList.remove('hidden');
-        })
-    }
 }

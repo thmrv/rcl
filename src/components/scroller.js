@@ -31,7 +31,6 @@ export default function Scroller(props) {
         <div class="arrow-left" onClick={scrollLeft}><img src="img/arrow-left.svg"></img></div><div class="arrow-right"><img src="img/arrow-right.svg" onClick={scrollRight}></img></div>
         <div className="scroller-wrapper" {...events} ref={ref}>
             <div className="arrow-slider overflow-x-scroll scrollbar-hide">
-                {typeof props.matches !== 'undefined' ? <ResultsMatches matches={props.matches.games} /> : ''}
                 {typeof props.pending !== 'undefined' ? <PendingMatches pending={props.pending} /> : ''}
             </div>
         </div>

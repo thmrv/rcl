@@ -30,7 +30,6 @@ export default class MatchCard extends React.Component {
         </div>
         <div class="right-wrapper time">
             <div class="match-time">{this.props.pending ? this.dateTime[0] : 'Результат матча'}</div>
-            <div class="timezone">{this.props.pending ? window.timeZone.name : ''}</div>
         </div>
         </a>
     </div>)

@@ -49,7 +49,7 @@ function Team() {
                     <div class="stats">
                         <Stat title={'Матчей'} values={[stats.games]} />
                         <Stat title={'Победы / ничьи / поражения'} values={[team.totalWins, team.totalDraws, team.totalLoses]} />
-                        <Stat title={'Итого убийств'} values={[stats.kills]} />
+                        <Stat title={'Итого фрагов'} values={[stats.kills]} />
                         <Stat title={'Итого смертей'} values={[stats.deaths]} />
                         <Stat title={'K/D'} values={[stats.kd]} />
                         <Stat title={'K/D разница'} values={[stats.kdDiff]} />

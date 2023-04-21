@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
     "axios": "^0.16.2",
+    "file_size_url": "^1.0.4",
     "html-react-parser": "^3.0.15",
     "https": "^1.0.0",
     "node-polyfill-webpack-plugin": "^2.0.1",

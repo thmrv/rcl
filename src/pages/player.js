@@ -47,7 +47,7 @@ function Player() {
                     </div>
                     <div class="stats">
                         <Stat title={'Матчей'} values={[stats.games]} />
-                        <Stat title={'Итого убийств'} values={[stats.kills]} />
+                        <Stat title={'Итого фрагов'} values={[stats.kills]} />
                         <Stat title={'Итого смертей'} values={[stats.deaths]} />
                         <Stat title={'Итого помощи'} values={[stats.assists]} />
                         <Stat title={'K/D'} values={[stats.kd]} />
