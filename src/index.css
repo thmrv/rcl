@@ -2267,6 +2267,25 @@ img.img-sm.avatar {
     margin: 1em;
   }
 
+  table.ladder_container {
+    max-width: 100%;
+    width: 100% !important;
+  }
+
+  .hero-left {
+    max-width: 100%;
+    width: 100% !important;
+    margin-right: 1em;
+  }
+
+  .subwrapper {
+    width: 100% !important;
+  }
+
+  .table-wrapper {
+    width: 100% !important;
+  }
+
   .modal-inner .team1-players-stats{
     margin-right: 0px;
   }
