@@ -43,7 +43,7 @@ export default class Footer extends React.Component {
             <div class="footer-bot-strip">
                 <div class="footer-links">
                     {this.props.links.map((title, index) => 
-                        <a target="_blank" href={docLinks[index]} class="footer-bullet-lower">{title}</a>
+                        <a href={docLinks[index]} class="footer-bullet-lower">{title}</a>
                     )}
                 </div>
                 <div class="footer-disclaimer">{this.props.disclaimer}</div>

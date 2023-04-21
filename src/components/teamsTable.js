@@ -8,7 +8,7 @@ export default class TeamsTable extends React.Component {
             <div class="title_md dark">СЕЗОН 2022/2023</div>
             <div class="teams_container">
                 {this.props.teams.teams.map((team) => (<div class="team-block-wrapper">
-                    <div class="team-block-logo"><img src={team.logo} class="img-team-logo"></img></div>
+                    <a href={'team/' + team.id} class="team-block-logo"><img src={team.logo} class="img-team-logo"></img></a>
                     <div class="team-block-name">{team.name}</div>
                 </div>)
                 )}
