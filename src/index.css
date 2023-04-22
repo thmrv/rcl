@@ -2294,6 +2294,12 @@ img.img-sm.avatar {
 }
 
 @media (max-width: 1100px) {
+  .header-top-strip .logo-wrapper {
+    justify-content: flex-start !important;
+    width: max-content;
+    margin-left: 0px;
+  }
+  
   .news-date {
     background: transparent;
     padding: 0px;
