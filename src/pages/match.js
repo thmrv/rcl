@@ -77,13 +77,12 @@ function Match() {
                                 </tr>
                             </thead>
                             {match.team1Stats.map((player, index) => (
-                                <a href={'plyer/' + player.id}><tr>
-                                    <td class="player-info-stats"><img class="small-img" src={playersTeam1[index].countryLogo}></img>{player.nickName}</td>
+                                <tr>
+                                    <a href={'plyer/' + player.id}><td class="player-info-stats"><img class="small-img" src={playersTeam1[index].countryLogo}></img>{player.nickName}</td></a>
                                     <td>{player.kills}</td>
                                     <td>{player.deaths}</td>
                                     <td>{player.assists}</td>
                                 </tr>
-                                </a>
                             ))}
                         </table>
                     </div>
@@ -99,13 +98,13 @@ function Match() {
                                 </tr>
                             </thead>
                             {match.team2Stats.map((player, index) => (
-                                <a href={'plyer/' + player.id}><tr>
-                                    <td class="player-info-stats"><img class="small-img" src={playersTeam2[index].countryLogo}></img>{player.nickName}</td>
+                                <tr>
+                                    <a href={'plyer/' + player.id}><td class="player-info-stats"><img class="small-img" src={playersTeam2[index].countryLogo}></img>{player.nickName}</td></a>
                                     <td>{player.kills}</td>
                                     <td>{player.deaths}</td>
                                     <td>{player.assists}</td>
                                 </tr>
-                                </a>
+
                             ))}
                         </table>
                     </div>
