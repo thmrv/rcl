@@ -49,7 +49,7 @@ function Docs() {
                 <div class="caption-sm">2048 Кб</div>
                 <a href="https://ruscyberleague.ru/static/IESF_Statutes_2021.pdf" class="title_md">IESF Statutes 2021</a>
                 <div class="caption-sm">726 Кб</div>
-                <a href="https://ruscyberleague.ru/static/CSGO_Rulebook.pdf" class="title_md">CSGO_Rulebook</a>
+                <a href="https://ruscyberleague.ru/static/CSGO_Rulebook.pdf" class="title_md">CSGO Rulebook</a>
                 <div class="caption-sm">5801 Кб</div>
             </div>
         </div>)

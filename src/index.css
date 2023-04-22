@@ -1675,7 +1675,6 @@ div {
 
 .arrow-slider .match-block-wrapper {
   max-width: 100%;
-  min-width: 24vw;
   height: 100%;
   max-height: 100%;
   min-height: 100%;
@@ -1764,7 +1763,7 @@ img {
   align-items: center;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
@@ -1774,12 +1773,40 @@ img {
   background: white;
 }
 
+.masthead-wrapper.header-wrapper {
+  background-position-x: center !important;
+}
+
+.stat-wrapper {
+  text-align: center;
+}
+
+.right-wrapper.time {
+  padding-left: 1em;
+  text-align: center;
+  padding-right: 0px;
+  font-size: 0.8em;
+}
+
 @media (min-width:1100px) {
+  .arrow-slider .match-block-wrapper {
+    height: 200px;
+  } 
+
+  .matches.history {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .match-time {
+    font-size: 1.4em !important;
+  }
+
   .week-section-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
-  
+
   .matches-section-wrapper-pending {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -2267,6 +2294,11 @@ img.img-sm.avatar {
 }
 
 @media (max-width: 1100px) {
+  .news-date {
+    background: transparent;
+    padding: 0px;
+  }
+
   .modal-inner {
     width: 100%;
     margin: 1em;
@@ -2295,7 +2327,7 @@ img.img-sm.avatar {
     width: 100% !important;
   }
 
-  .modal-inner .team1-players-stats{
+  .modal-inner .team1-players-stats {
     margin-right: 0px;
   }
 
@@ -2304,20 +2336,20 @@ img.img-sm.avatar {
     top: 0px;
     left: 0px;
     padding: .5em;
-      padding-top: 0.5em;
+    padding-top: 0.5em;
     cursor: pointer;
     font-size: 2em;
     padding-top: 0px;
   }
 
-  .modal-inner .team2-players-stats{
+  .modal-inner .team2-players-stats {
     margin-right: 0px;
   }
 
   .modal-inner .players-stats {
     gap: .5em;
   }
-  
+
   .modal-inner .stats-vs-img {
     display: none;
   }
@@ -2333,7 +2365,7 @@ img.img-sm.avatar {
     font-size: 0.85em;
   }
 
-  .ladder_container td + td{
+  .ladder_container td+td {
     border: 0px;
   }
 
@@ -2345,7 +2377,7 @@ img.img-sm.avatar {
     max-width: 25px !important;
   }
 
-  .ladder-block-wrapper{
+  .ladder-block-wrapper {
     border-top: 1px solid #eee !important;
     min-height: 30px !important;
   }

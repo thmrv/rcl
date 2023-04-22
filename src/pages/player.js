@@ -57,7 +57,7 @@ function Player() {
             </div>
             <div class="team-lower-section player-lower-section">
                 <div class="title_lg">История матчей</div>
-                <div class="matches">
+                <div class="matches history">
                     {matches.map((match) => (
                         <MatchCard match={match} pending={false} teamPage={true} />
                     ))}
