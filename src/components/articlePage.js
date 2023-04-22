@@ -17,7 +17,7 @@ export default class ArticlePage extends React.Component {
     }
 
     render() {
-        let contentParsed = HTMLReactParser(this.props.article.content.replace(/([\d\w-.]+?\.(a[cdefgilmnoqrstuwz]|b[abdefghijmnorstvwyz]|c[acdfghiklmnoruvxyz]|d[ejkmnoz]|e[ceghrst]|f[ijkmnor]|g[abdefghilmnpqrstuwy]|h[kmnrtu]|i[delmnoqrst]|j[emop]|k[eghimnprwyz]|l[abcikrstuvy]|m[acdghklmnopqrstuvwxyz]|n[acefgilopruz]|om|p[aefghklmnrstwy]|qa|r[eouw]|s[abcdeghijklmnortuvyz]|t[cdfghjkmnoprtvwz]|u[augkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw]|aero|arpa|biz|com|coop|edu|info|int|gov|mil|museum|name|net|org|pro)(\b|\W(?<!&|=)(?!\.\s|\.{3}).*?))(\s|$)/, "<a href='$&'>$&</a>"))
+        let contentParsed = HTMLReactParser(this.props.article.content)
         let self = this;
         return (<div class="article-page-wrapper">
             {self.getDate(this.props.article.createdDate)}
