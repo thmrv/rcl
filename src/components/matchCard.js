@@ -13,7 +13,7 @@ export default class MatchCard extends React.Component {
         let self = this;
         return (<div class="match-block-wrapper" id={'match' + this.props.match.id}>
         {self.getDate(this.props.match.startedAt)}
-        <a class="match-link" href={'match/' + this.props.match.id}>
+        <a class="match-link" href={'/match/' + this.props.match.id}>
         <div class="left-wrapper">
             <div class="date">{this.dateTime[1]}</div>
             <div class="match-team-wrapper">
