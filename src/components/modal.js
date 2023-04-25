@@ -24,9 +24,9 @@ function Modal(props) {
         })
     }, [setData]);
 
-    console.log(stats);
-
     if (loading) return (<div class="loader"><div class="spinner over"></div></div>)
+    
+    appendTeamPlayersFlags(props);
 
     if (typeof stats != 'undefined') {
         return (<>
@@ -48,7 +48,7 @@ function Modal(props) {
                             </thead>
                             {stats[props.id].team1Stats.map((player, index) => (
                                 <tr>
-                                    <td class="player-info-stats"><img class="small-img" src={props.playersTeam1[index].countryLogo}></img>{player.nickName}</td>
+                                    <td class="player-info-stats"><img class="small-img" src={player.countryLogo}></img>{player.nickName}</td>
                                     <td>{player.kills}</td>
                                     <td>{player.deaths}</td>
                                     <td>{player.assists}</td>
@@ -69,7 +69,7 @@ function Modal(props) {
                             </thead>
                             {stats[props.id].team2Stats.map((player, index) => (
                                 <tr>
-                                    <td class="player-info-stats"><img class="small-img" src={props.playersTeam2[index].countryLogo}></img>{player.nickName}</td>
+                                    <td class="player-info-stats"><img class="small-img" src={player.countryLogo}></img>{player.nickName}</td>
                                     <td>{player.kills}</td>
                                     <td>{player.deaths}</td>
                                     <td>{player.assists}</td>
@@ -82,5 +82,22 @@ function Modal(props) {
         </>);
     }
 };
+
+function appendTeamPlayersFlags(props){
+    stats[props.id].team1Stats.map((player, index) => {
+        props.playersTeam1.map((playerIn, indexIn) => {
+            if (playerIn.nickName === player.nickName){
+                player['countryLogo'] = playerIn.countryLogo;
+            }
+        })
+    })
+    stats[props.id].team2Stats.map((player, index) => {
+        props.playersTeam2.map((playerIn, indexIn) => {
+            if (playerIn.nickName === player.nickName){
+                player['countryLogo'] = playerIn.countryLogo;
+            }
+        })
+    })
+}
 
 export default Modal;

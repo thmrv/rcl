@@ -40,9 +40,11 @@ function Match() {
         document.querySelector('.header-bot-strip').style.display = 'none';
     }
 
+    appendTeamPlayersFlags();
+
     if (typeof match != 'undefined' && typeof team1 != 'undefined' && typeof team2 != 'undefined' && typeof playersTeam1 != 'undefined' && typeof playersTeam2 != 'undefined') {
         return (<><div class="match-wrapper">
-            <MastheadMatch match={match} team1={team1} team2={team2} players1={playersTeam1} players2={playersTeam2} />
+            <MastheadMatch match={match} team1={team1} team2={team2} players1={playersTeam1} players2={playersTeam2} stats1={match.team1Stats} stats2={match.team2Stats}/>
             <div class="details-wrapper">
                 <div class="lineups">
                     <div class="title_md">Составы команд</div>
@@ -78,7 +80,7 @@ function Match() {
                             </thead>
                             {match.team1Stats.map((player, index) => (
                                 <tr>
-                                    <a href={'/player/' + playersTeam1[index].id}><td class="player-info-stats"><img class="small-img" src={playersTeam1[index].countryLogo}></img>{player.nickName}</td></a>
+                                    <a href={'/player/' + playersTeam1[index].id}><td class="player-info-stats"><img class="small-img" src={player.countryLogo}></img>{player.nickName}</td></a>
                                     <td>{player.kills}</td>
                                     <td>{player.deaths}</td>
                                     <td>{player.assists}</td>
@@ -99,7 +101,7 @@ function Match() {
                             </thead>
                             {match.team2Stats.map((player, index) => (
                                 <tr>
-                                    <a href={'/player/' + playersTeam2[index].id}><td class="player-info-stats"><img class="small-img" src={playersTeam2[index].countryLogo}></img>{player.nickName}</td></a>
+                                    <a href={'/player/' + playersTeam2[index].id}><td class="player-info-stats"><img class="small-img" src={player.countryLogo}></img>{player.nickName}</td></a>
                                     <td>{player.kills}</td>
                                     <td>{player.deaths}</td>
                                     <td>{player.assists}</td>
@@ -115,5 +117,22 @@ function Match() {
         <div class="status-error">Нет данных</div>
     }
 };
+
+function appendTeamPlayersFlags(){
+    match.team1Stats.map((player, index) => {
+        playersTeam1.map((playerIn, indexIn) => {
+            if (playerIn.nickName === player.nickName){
+                player['countryLogo'] = playerIn.countryLogo;
+            }
+        })
+    })
+    match.team2Stats.map((player, index) => {
+        playersTeam2.map((playerIn, indexIn) => {
+            if (playerIn.nickName === player.nickName){
+                player['countryLogo'] = playerIn.countryLogo;
+            }
+        })
+    })
+}
 
 export default Match;

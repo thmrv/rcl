@@ -46,9 +46,8 @@ export default class MastheadMatch extends React.Component {
                 </div>
             </div>
             {this.props.match.maps.map((map) => (
-                <Modal id={map.id} playersTeam1={this.props.players1} playersTeam2={this.props.players2}/>
+                <Modal id={map.id} playersTeam1={this.props.match.team1Stats} playersTeam2={this.props.match.team2Stats}/>
             ))}
         </div>)
     }
-
 }
