@@ -8,13 +8,27 @@ export default class MatchCard extends React.Component {
         super(props)
         this.dateTime = new Date();
         this.teams = [];
+        this.getDate(this.props.match.startedAt)
+        switch (this.props.match.status) {
+            case 'pending':
+                this.status = this.dateTime[0]
+                break;
+            case 'started':
+                this.status = 'Начат'
+                break;
+            case 'finished':
+                this.status = 'Результат матча'
+                break;
+            default:
+                this.status = this.dateTime[0]
+                break;
+        }
     }
 
     render() {
         let self = this;
         this.sortTeams();
         return (<div class="match-block-wrapper" id={'match' + this.props.match.id}>
-            {self.getDate(this.props.match.startedAt)}
             <a class="match-link" href={'/match/' + this.props.match.id}>
                 <div class="left-wrapper">
                     <div class="date">{this.dateTime[1]}</div>
@@ -31,7 +45,7 @@ export default class MatchCard extends React.Component {
                     </div>
                 </div>
                 <div class="right-wrapper time">
-                    <div class="match-time">{this.props.pending ? this.dateTime[0] : 'Результат матча'}</div>
+                    <div class="match-time">{this.status}</div>
                 </div>
             </a>
         </div>)
