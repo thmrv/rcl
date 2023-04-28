@@ -1793,6 +1793,12 @@ img {
     justify-content: flex-end;
   }
 
+  .matches-section-wrapper.matches-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+  }
+
   .masthead-vs{
     max-width: 60%;
     width: 100%;
@@ -2324,6 +2330,12 @@ img.img-sm.avatar {
 }
 
 @media (max-width: 1100px) {
+
+  .matches-section-wrapper.matches-results{
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+  }
 
   .ladder-page-wrapper {
     padding: 0px;
