@@ -4,7 +4,7 @@ import fetchHelper from '../fetchHelper';
 import Button from '../components/button';
 
 let matches;
-let step = 50,
+let step = 24,
     skip = 0;
 
 let month = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
@@ -17,8 +17,9 @@ function Matches() {
 
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
+
     const loadMore = (e) => {
-        step += 50;
+        step += 24;
         //skip += 25;
         setData(false)
         e.currentTarget.innerHTML = '<div class="spinner button"></div>';
@@ -31,7 +32,7 @@ function Matches() {
             document.querySelector('.load-more').style.pointerEvents = 'all';
             setData(true)
             //setLoading(false)
-            //forceUpdate();
+            forceUpdate();
         })
     }
 
@@ -51,29 +52,27 @@ function Matches() {
 
     if (typeof matches != 'undefined') {
 
-        if (typeof matches != 'undefined') {
-            if (matches.games.length === 0) {
-                return (<div class="animate__animated animate__fade no-results" onClick={reload}>Результатов нет <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
-                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
-                </svg></div>)
-            }
+        let weekData = prepareData(matches)
+        if (typeof weekData != 'undefined') {
+            
             return (<div class="matches-wrapper animate__animated animate__fadeIn">
                 <div class="title_lg dark">Результаты матчей</div>
-                <div class="matches-section-wrapper matches-results">
-                            {matches.games.map((match) => (
+                <div class="matches-section-wrapper">
+                    {weekData.map((week, index) => (<div class="week-wrapper">
+                        <div class="week-title-wrapper"><div class="week-title">{week[0].week} неделя</div><div class="hr"></div></div>
+                        <div class="week-section-wrapper">
+                            {week.map((match) => (
                                 <MatchCard match={match} pending={false} />
                             ))}
+                        </div>
+                    </div>
+                    ))}
                 </div>
                 <div class={'load-more'} text={'Показать еще'} data-attr={'load-more'} onClick={loadMore} >Показать еще</div>
             </div>);
         }
     }
 };
-
-function prepareData() {
-
-}
 
 function getDate(date) {
     let object = new Date(date);
@@ -85,24 +84,17 @@ Date.prototype.getWeek = function () {
     return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
 }
 
-function prepareDataWeek(matches) {
+function prepareData(matches) {
     let resultingData = [];
     matches.games.forEach((match, index) => {
-        let dateTime = new Date(match.startedAt);
-        let week;
-        week = dateTime.getWeek() + 1;
+        let week = match.week;
         if (typeof resultingData[week] == 'undefined') {
             resultingData[week] = [];
         }
         resultingData[week].push(match); 
     })
-    let lastKey;
-    /*resultingData.map((value, key) => {
-        lastKey = key;
-        if (key > lastKey) {
-
-        }
-    });*/
+    let prevKey;
+    resultingData = resultingData.slice().reverse();
     console.log(resultingData);
     return resultingData;
 }
