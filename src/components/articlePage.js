@@ -17,7 +17,7 @@ export default class ArticlePage extends React.Component {
     }
 
     render() {
-        let contentParsed = HTMLReactParser(this.props.article.content)
+        let contentParsed = HTMLReactParser(this.urlify(this.props.article.content));
         let self = this;
         return (<div class="article-page-wrapper">
             {self.getDate(this.props.article.createdDate)}
@@ -39,5 +39,13 @@ export default class ArticlePage extends React.Component {
     getDate(date) {
         let object = new Date(date);
         this.dateTime = [object.getHours() + ":" + (object.getMinutes() < 10 ? '0' : '') + object.getMinutes(), object.getDate() + ' ' + month[object.getMonth()], object.getFullYear()];
+    }
+
+    urlify(text) {
+        var urlRegex = /(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/igm;
+        return text.replace(urlRegex, function(url) {
+          return '<a href="' + url + '">' + url + '</a>';
+        })
+        // return text.replace(urlRegex, '<a href="$1">$1</a>')
     }
 }

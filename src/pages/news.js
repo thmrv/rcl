@@ -15,14 +15,20 @@ function News() {
 
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
-    const loadMore = () => {
+    const loadMore = (e) => {
         step += 25;
-        skip += 25;
+        //skip += 25;
         setData(false)
-        setLoading(true)
+        //setLoading(true)
+        e.currentTarget.innerHTML = '<div class="spinner button"></div>';
+        e.currentTarget.style.background = 'white';
+        e.currentTarget.style.pointerEvents = 'none';
         fetchHelper(window.apiHost + 'news?take=' + step + '&skip=' + skip).then((data) => news = data).finally(() => {
             setData(true)
-            setLoading(false)
+            document.querySelector('.load-more').innerHTML = 'ПОКАЗАТЬ ЕЩЕ';
+            document.querySelector('.load-more').style.background = '#e5271d';
+            document.querySelector('.load-more').style.pointerEvents = 'all';
+            //setLoading(false)
             forceUpdate();
         })
     }
