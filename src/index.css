@@ -2351,6 +2351,10 @@ img.img-sm.avatar {
 }
 
 @media (max-width: 1100px) {
+  .logo-strip-img {
+    object-fit: contain;
+    max-height: 60px;
+  }
 
   .vs-team-name:first-child {
     text-align: right;
@@ -3095,4 +3099,35 @@ img.img-sm.avatar {
     column-gap: 2em;
     column-gap: 0px;
   }
+}
+
+.article-block-wrapper:hover{
+  transform: translateY(-8px);
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.075);
+}
+
+.logo-strip.desktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+}
+
+.logo-strip.mobile {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2em;
+  align-items: center;
+}
+
+.logo-strip.mobile .image-wrapper {
+  flex: 33.33% 1;
+  max-width: 150px;
+  margin-bottom: 25px;
+}
+
+.logo-strip-img {
+  width: 100%;
 }

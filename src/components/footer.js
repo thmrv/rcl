@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "./logo.js";
 import SocFooter from "./social_footer.js";
+import LogoStrip from "./logoStrip.js";
 
 let docLinks = ['/docs/Kartochka_organizacii.pdf', '/docs/Usloviya_polzovania_saitom.docx', '/docs/Contacts.pdf',]
 
@@ -40,6 +41,9 @@ export default class Footer extends React.Component {
                     <SocFooter />
                 </div>
             </div>
+            <div class="logo-strip-wrapper">
+                        <LogoStrip />
+                </div>
             <div class="footer-bot-strip">
                 <div class="footer-links">
                     {this.props.links.map((title, index) => 
