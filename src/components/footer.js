@@ -42,7 +42,7 @@ export default class Footer extends React.Component {
                 </div>
             </div>
             <div class="logo-strip-wrapper">
-                        <LogoStrip />
+                    <LogoStrip />
                 </div>
             <div class="footer-bot-strip">
                 <div class="footer-links">
